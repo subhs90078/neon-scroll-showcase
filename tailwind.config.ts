@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -48,6 +47,10 @@ export default {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--gradient-color-stops))',
         'blue-gradient': 'linear-gradient(90deg, #1EAEDB 0%, #33C3F0 100%)',
+      },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
       },
       animation: {
         'glow': 'glow 1.5s ease-in-out infinite alternate',
