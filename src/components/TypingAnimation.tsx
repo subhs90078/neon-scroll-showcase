@@ -29,10 +29,13 @@ const TypingAnimation = () => {
     if (!isDeleting && updatedText === fullText) {
       setIsDeleting(true);
       setDelta(period);
-    } else if (isDeleting && updatedText === '') {
-      setIsDeleting(false);
-      setLoopNum(loopNum + 1);
-      setDelta(200);
+    } else if (isDeleting) {
+      setDelta(100); // Faster erasing speed
+      if (updatedText === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+        setDelta(200);
+      }
     }
   };
 

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -6,6 +5,8 @@ import { FileText, Code, Award, ExternalLink } from 'lucide-react';
 import TypingAnimation from '../components/TypingAnimation';
 import TechStack from '../components/TechStack';
 import { Card, CardContent } from "@/components/ui/card";
+import SocialLinks from '../components/SocialLinks';
+import { useQuery } from '@tanstack/react-query';
 
 const Index = () => {
   useEffect(() => {
@@ -87,6 +88,21 @@ const Index = () => {
     }
   ];
 
+  const { data: projectCount = 3 } = useQuery({
+    queryKey: ['projectCount'],
+    queryFn: () => Promise.resolve(3)
+  });
+
+  const { data: certificateCount = 3 } = useQuery({
+    queryKey: ['certificateCount'],
+    queryFn: () => Promise.resolve(3)
+  });
+
+  const { data: techStackCount = 12 } = useQuery({
+    queryKey: ['techStackCount'],
+    queryFn: () => Promise.resolve(12)
+  });
+
   return (
     <div className="min-h-screen bg-deepBlue text-white overflow-x-hidden">
       {/* Navigation */}
@@ -108,9 +124,9 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center pt-20">
+      <section id="home" className="min-h-screen flex items-center pt-20">
         <div className="container mx-auto px-6" data-aos="fade-up">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl text-right">
             <div className="text-neonBlue mb-8 inline-block px-6 py-2 rounded-full border border-neonBlue">
               Ready to Innovate
             </div>
@@ -119,14 +135,14 @@ const Index = () => {
             <p className="text-lg mb-8 text-gray-300 mt-6">
               Creating innovative, functional, and user-friendly websites for digital solutions.
             </p>
-            <div className="flex gap-4 flex-wrap mb-8 justify-center">
+            <div className="flex gap-4 flex-wrap justify-end mb-8">
               {['React', 'Javascript', 'Node.js', 'Tailwind'].map((tech) => (
                 <span key={tech} className="px-4 py-2 rounded-full bg-deepBlue border border-neonBlue text-neonBlue">
                   {tech}
                 </span>
               ))}
             </div>
-            <div className="flex gap-4 justify-center">
+            <div className="flex gap-4 justify-end">
               <button onClick={() => scrollToSection('portfolio')} className="flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-gradient hover:opacity-90 transition-all">
                 <Code size={20} />
                 Projects
@@ -136,6 +152,7 @@ const Index = () => {
                 Contact
               </button>
             </div>
+            <SocialLinks />
           </div>
         </div>
       </section>
@@ -156,23 +173,27 @@ const Index = () => {
               </div>
             </div>
             <div className="relative" data-aos="fade-left">
-              <div className="w-64 h-64 mx-auto rounded-full overflow-hidden border-4 border-neonBlue animate-float">
-                <img src="/lovable-uploads/4530cc6d-3c81-4666-8d12-8a7939198fca.png" alt="Profile" className="w-full h-full object-cover" />
+              <div className="w-64 h-64 mx-auto rounded-full overflow-hidden border-4 border-neonBlue group hover:scale-105 transition-transform duration-300">
+                <img 
+                  src="/lovable-uploads/4530cc6d-3c81-4666-8d12-8a7939198fca.png" 
+                  alt="Profile" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                />
               </div>
             </div>
           </div>
           <div className="flex justify-center mt-10 space-x-4">
-            <button onClick={() => scrollToSection('portfolio')} className="flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-gradient hover:opacity-90 transition-all">
+            <button onClick={() => scrollToSection('portfolio')} className="flex items-center gap-2 px-6 py-3 rounded-lg bg-deepBlue border border-neonBlue hover:bg-neonBlue/20 transition-all">
               <Code size={20} />
-              Projects
+              Projects ({projectCount})
             </button>
-            <button onClick={() => scrollToSection('certificates')} className="flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-gradient hover:opacity-90 transition-all">
+            <button onClick={() => scrollToSection('certificates')} className="flex items-center gap-2 px-6 py-3 rounded-lg bg-deepBlue border border-neonBlue hover:bg-neonBlue/20 transition-all">
               <Award size={20} />
-              Certificates
+              Certificates ({certificateCount})
             </button>
-            <button onClick={() => scrollToSection('tech-stack')} className="flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-gradient hover:opacity-90 transition-all">
+            <button onClick={() => scrollToSection('tech-stack')} className="flex items-center gap-2 px-6 py-3 rounded-lg bg-deepBlue border border-neonBlue hover:bg-neonBlue/20 transition-all">
               <FileText size={20} />
-              Tech Stack
+              Tech Stack ({techStackCount})
             </button>
           </div>
         </div>

@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -11,7 +10,7 @@ export default {
         neonBlue: '#1EAEDB',
         deepBlue: '#0A192F',
         lightBlue: '#33C3F0',
-        background: '#0A192F', // Updated to match eki.my.id dark blue background
+        background: '#0A192F',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -48,7 +47,7 @@ export default {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--gradient-color-stops))',
         'blue-gradient': 'linear-gradient(90deg, #1EAEDB 0%, #33C3F0 100%)',
-        'purple-gradient': 'linear-gradient(90deg, #7928CA 0%, #FF0080 100%)', // Added purple gradient
+        'purple-gradient': 'linear-gradient(90deg, #7928CA 0%, #FF0080 100%)',
       },
       transitionProperty: {
         'height': 'height',
