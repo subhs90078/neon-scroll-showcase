@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -10,7 +11,7 @@ export default {
         neonBlue: '#1EAEDB',
         deepBlue: '#0A192F',
         lightBlue: '#33C3F0',
-        background: '#080B14',
+        background: '#0A192F', // Updated to match eki.my.id dark blue background
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -47,6 +48,7 @@ export default {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--gradient-color-stops))',
         'blue-gradient': 'linear-gradient(90deg, #1EAEDB 0%, #33C3F0 100%)',
+        'purple-gradient': 'linear-gradient(90deg, #7928CA 0%, #FF0080 100%)', // Added purple gradient
       },
       transitionProperty: {
         'height': 'height',
@@ -54,6 +56,8 @@ export default {
       },
       animation: {
         'glow': 'glow 1.5s ease-in-out infinite alternate',
+        'float': 'float 3s ease-in-out infinite',
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         glow: {
@@ -63,6 +67,10 @@ export default {
           'to': {
             textShadow: '0 0 20px #fff, 0 0 30px #33C3F0, 0 0 40px #33C3F0, 0 0 50px #33C3F0'
           }
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
         }
       }
     }
